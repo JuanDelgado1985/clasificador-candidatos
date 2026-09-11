@@ -1,3 +1,6 @@
+from leer_candidatos_csv import leer_candidatos_csv
+
+
 def clasificador_candidatos(candidatos):
     count_recomendados = 0
     count_no_recomendados = 0
@@ -20,13 +23,8 @@ def clasificador_candidatos(candidatos):
     return recomendados_disponibles, count_recomendados, count_no_recomendados, count_a_revisar, count_no_disponible
 
 
-candidatos = [
-    {'nombre': 'Joaquín', 'nota': 85, 'disponible': True, 'anios_experiencia': 3},
-    {'nombre': 'Juan', 'nota': 70, 'disponible': True, 'anios_experiencia': 4},
-    {'nombre': 'Rafaela', 'nota': 100, 'disponible': True, 'anios_experiencia': 6},
-    {'nombre': 'Luis', 'nota': 48, 'disponible': True, 'anios_experiencia': 2},
-    {'nombre': 'Lou', 'nota': 90, 'disponible': False, 'anios_experiencia': 4}
-]
+candidatos = leer_candidatos_csv("candidatos.csv")
+
 
 recomendados_disponibles, count_recomendados, count_no_recomendados, count_a_revisar, count_no_disponible = clasificador_candidatos(candidatos)
 
