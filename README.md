@@ -16,7 +16,7 @@ Reducir el tiempo de revisión manual de candidatos y priorizar automáticamente
 
 ## Cómo funciona
 
-Cada candidato se representa como un diccionario con los siguientes datos: nombre, nota, disponibilidad y años de experiencia. El script aplica las siguientes reglas:
+El script toma la información de un archivo `candidatos.csv`, con los encabezados `nombre, nota, disponible, anios_experiencia`. Aplica las siguientes reglas de clasificación:
 
 - Nota ≥ 80 y disponible → Recomendado
 - Nota ≥ 80 y no disponible → Recomendado, pero no disponible
@@ -27,7 +27,8 @@ Cada candidato se representa como un diccionario con los siguientes datos: nombr
 
 1. Tener Python 3 instalado.
 2. Descargar o clonar este repositorio.
-3. Ejecutar desde la terminal:
+3. Asegurarse de tener un archivo `candidatos.csv` en la misma carpeta que `candidatos.py`, con los encabezados `nombre, nota, disponible, anios_experiencia`.
+4. Ejecutar desde la terminal:
 
 \`\`\`bash
 python candidatos.py
@@ -35,7 +36,7 @@ python candidatos.py
 
 ## Ejemplo de uso
 
-Con la lista de candidatos incluida en el archivo, el script imprime:
+Con el archivo `candidatos.csv` incluido en el repositorio, el script imprime:
 
 \`\`\`
 [lista de diccionarios de los candidatos recomendados y disponibles]
@@ -45,7 +46,6 @@ Cantidad de candidatos que tienen una buena nota pero no están disponibles = 1
 
 ## Mejoras futuras
 
-- Leer la lista de candidatos desde un archivo externo (CSV o base de datos), en vez de tenerla fija en el código, para poder actualizarla sin modificar el script.
 - Agregar clasificación por perfil (técnico, comercial, customer), idiomas y estudios.
 - Incorporar una interfaz o formulario de carga de candidatos.
 - Exportar el reporte final a un archivo (CSV o Excel) en vez de solo imprimirlo en pantalla.
