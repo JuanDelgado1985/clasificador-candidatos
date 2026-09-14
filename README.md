@@ -23,6 +23,13 @@ El script toma la información de un archivo `candidatos.csv`, con los encabezad
 - Nota entre 50 y 79 → A revisar
 - Nota < 50 → No recomendado
 
+## Manejo de errores
+
+El script está preparado para manejar dos situaciones comunes sin interrumpir su ejecución:
+
+- **Archivo no encontrado:** si `candidatos.csv` no existe o el nombre no coincide, se muestra un mensaje indicándolo y el programa finaliza de forma controlada.
+- **Datos inválidos en una fila:** si una fila tiene un valor que no puede convertirse al tipo de dato esperado (por ejemplo, texto en la columna `nota`), se muestra un mensaje indicando qué fila tiene el problema, esa fila se omite, y el resto de los candidatos se procesa con normalidad.
+
 ## Cómo ejecutarlo
 
 1. Tener Python 3 instalado.
@@ -49,3 +56,4 @@ Cantidad de candidatos que tienen una buena nota pero no están disponibles = 1
 - Agregar clasificación por perfil (técnico, comercial, customer), idiomas y estudios.
 - Incorporar una interfaz o formulario de carga de candidatos.
 - Exportar el reporte final a un archivo (CSV o Excel) en vez de solo imprimirlo en pantalla.
+- Guardar en un archivo de log las filas con errores, en vez de solo mostrarlas en consola.
