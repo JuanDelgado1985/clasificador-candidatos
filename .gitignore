@@ -1,1 +1,3 @@
 __pycache__/
+.pytest_cache/
+candidatos_disponibles.xlsx

@@ -13,10 +13,13 @@ Reducir el tiempo de revisión manual de candidatos y priorizar automáticamente
 ## Tecnologías utilizadas
 
 - Python 3
+- pandas
+- openpyxl (exportación a Excel)
+- pytest (testing)
 
 ## Cómo funciona
 
-El script toma la información de un archivo `candidatos.csv`, con los encabezados `nombre, nota, disponible, anios_experiencia`. Aplica las siguientes reglas de clasificación:
+El script toma la información de un archivo `candidatos.csv`, con los encabezados `nombre, nota, disponible, anios_experiencia`. Cada candidato se representa como un objeto de la clase `Candidato`, que sabe clasificarse a sí mismo según estas reglas:
 
 - Nota ≥ 80 y disponible → Recomendado
 - Nota ≥ 80 y no disponible → Recomendado, pero no disponible
@@ -34,8 +37,9 @@ El script está preparado para manejar dos situaciones comunes sin interrumpir s
 
 1. Tener Python 3 instalado.
 2. Descargar o clonar este repositorio.
-3. Asegurarse de tener un archivo `candidatos.csv` en la misma carpeta que `candidatos.py`, con los encabezados `nombre, nota, disponible, anios_experiencia`.
-4. Ejecutar desde la terminal:
+3. Instalar las dependencias: `pip install pandas openpyxl pytest`
+4. Asegurarse de tener un archivo `candidatos.csv` en la misma carpeta que `candidatos.py`, con los encabezados `nombre, nota, disponible, anios_experiencia`.
+5. Ejecutar desde la terminal:
 
 \`\`\`bash
 python candidatos.py
@@ -46,14 +50,22 @@ python candidatos.py
 Con el archivo `candidatos.csv` incluido en el repositorio, el script imprime:
 
 \`\`\`
-[lista de diccionarios de los candidatos recomendados y disponibles]
+[lista de objetos Candidato recomendados y disponibles]
 cantidad de recomendados = 2, cantidad de no recomendados = 1, cantidad de candidatos a revisar = 1
 Cantidad de candidatos que tienen una buena nota pero no están disponibles = 1
+\`\`\`
+
+## Tests
+
+El proyecto incluye tests automatizados con `pytest` que verifican el método de clasificación, cubriendo los casos principales y los límites exactos de las reglas de negocio (nota 80 y nota 50). Para ejecutarlos:
+
+\`\`\`bash
+pytest test_candidato.py
 \`\`\`
 
 ## Mejoras futuras
 
 - Agregar clasificación por perfil (técnico, comercial, customer), idiomas y estudios.
 - Incorporar una interfaz o formulario de carga de candidatos.
-- Exportar el reporte final a un archivo (CSV o Excel) en vez de solo imprimirlo en pantalla.
+- Integrar la exportación a Excel (ya explorada en un script aparte) directamente al flujo principal del programa.
 - Guardar en un archivo de log las filas con errores, en vez de solo mostrarlas en consola.
